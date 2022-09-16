@@ -6,7 +6,6 @@ import { Title } from '../../components/Title';
 
 import {GAMES} from '../../utils/games';
 
-
 import { styles } from './styles';
 
 export function Home() {
