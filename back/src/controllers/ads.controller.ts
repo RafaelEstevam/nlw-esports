@@ -2,6 +2,7 @@ import { Response, Request } from "express";
 import mongoose from "mongoose";
 import AdsSchema from "../schemas/ads.schemas";
 import { Ads } from "../interfaces/ads.interface";
+import GamesSchemas from "../schemas/games.schemas";
 
 const AdsController = {
     async get(req: Request, res: Response){
@@ -32,9 +33,19 @@ const AdsController = {
     },
     async post(req: Request, res: Response){
         const ads:Ads = req.body;
-        const newAds = await AdsSchema.create(ads);
-        newAds.save();
-        res.status(201).json({newAds});
+        const searchedGame = await GamesSchemas.findOne({name: ads.game});
+        if(searchedGame){
+            const newAds = await AdsSchema.create(ads);
+            newAds.save();
+            const gameUpdated = await GamesSchemas.findOneAndUpdate(
+                {name: ads.game},
+                {ads: [...searchedGame.ads, ...[newAds.id]]},
+                {new: true}
+            );
+            return res.status(200).json({message: "Ads created", gameUpdated});
+        }else{
+            return res.status(400).json({message: "Not found"});
+        }
     },
     async put(req: Request, res: Response){
         const ads:Ads = req.body;
@@ -60,8 +71,16 @@ const AdsController = {
         const {id} = req.body;
         if(mongoose.Types.ObjectId.isValid(id)){
             const searchedAds = await AdsSchema.findById(id);
+            const searchedGame = await GamesSchemas.findOne({ads:{$eq: id}});
             if(searchedAds){
                 await AdsSchema.findByIdAndDelete(id);
+                const ads = searchedGame?.ads.filter((item) => {return item !== id});
+                const gameUpdated = await GamesSchemas.findOneAndUpdate(
+                    {ads:{$eq: id}},
+                    {ads},
+                    {new: true}
+                );
+                // return res.status(200).json(gameUpdated);
                 return res.status(200).json({message: "Ads deleted"});
             }else{
                 return res.status(400).json({message: "Not found"});

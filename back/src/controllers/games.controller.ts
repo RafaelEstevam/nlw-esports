@@ -2,6 +2,7 @@ import { Response, Request } from "express";
 import mongoose from "mongoose";
 import GameSchema from "../schemas/games.schemas";
 import { Game } from "../interfaces/games.interface";
+import AdsSchemas from "../schemas/ads.schemas";
 
 const GamesController = {
     async get(req: Request, res: Response){
