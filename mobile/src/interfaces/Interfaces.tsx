@@ -4,9 +4,9 @@ import { AdsInterface } from "./Ads.interface";
 import { GameInterface } from "./Game.interface";
 
 export interface GameParams {
-    name: string,
-    id: string, 
-    thumbnail: string
+    name?: string,
+    id?: string, 
+    thumbnail?: string
 }
 
 export interface Ads {

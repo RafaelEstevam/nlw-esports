@@ -32,7 +32,7 @@ export function Adscard({data, action, setDiscord, ...rest}:AdsPropsInterface) {
             </Text>
         </View>
         
-        <View style={styles.wrapper}>
+        <View>
           <TouchableOpacity style={styles.button} onPress={() => {
             action(true);
             setDiscord(data.discord);

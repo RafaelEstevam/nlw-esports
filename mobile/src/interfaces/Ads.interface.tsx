@@ -1,4 +1,5 @@
 export interface AdsInterface {
+    _id: string;
     nameNickName: string,
     xyYears: number, 
     daysToPlay: Array<String>,

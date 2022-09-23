@@ -18,7 +18,8 @@ export const styles = StyleSheet.create({
   },
   contentList:{
     paddingLeft: 32,
-    paddingRight: 64
+    paddingRight: 64,
+    alignItems: 'flex-start'
   },
   header:{
     flexDirection: 'row',

@@ -6,8 +6,8 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.COLORS.SHAPE,
     padding: 16,
     borderRadius: 8,
-    minHeight: 292,
-    maxHeight: 300,
+    // minHeight: 292,
+    // maxHeight: 300,
     width: 180,
     marginRight: 24,
     // flex: 0
