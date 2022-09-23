@@ -11,7 +11,20 @@ export const styles = StyleSheet.create({
     backgroundColor: '#00000060',
     alignItems: 'center',
     justifyContent:'center',
+    flexDirection: 'row',
+    padding: 32
+  },
+  axiosButton: {
+    width: '100%',
+    padding: 16,
+    backgroundColor: THEME.COLORS.ALERT,
+    borderRadius: 8,
+    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row'
+  },
+  axiosButtonLabel: {
+    color: THEME.COLORS.TEXT,
+    fontWeight: '900'
   }
-
 });
