@@ -1,11 +1,7 @@
+import React from 'react';
 import { View, Text, ViewProps } from 'react-native';
+import { TitleProps } from '../../interfaces/Interfaces';
 import { styles } from './styles';
-
-interface TitleProps extends ViewProps {
-    title: String,
-    subtitile: String,
-    align: 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;
-}
 
 export function Title({title, subtitile, align}: TitleProps) {
   return (

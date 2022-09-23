@@ -12,7 +12,7 @@ const AdsController = {
     async getById(req: Request, res: Response){
         const {id} = req.params;
         if(mongoose.Types.ObjectId.isValid(id)){
-            const ads = await AdsSchema.findById(id, {discord: 0});
+            const ads = await AdsSchema.findById(id);
             if(ads){
                 return res.status(200).json(ads);
             }else{
@@ -24,7 +24,7 @@ const AdsController = {
     },
     async getAdsByGameName(req: Request, res: Response){
         const {game} = req.body;
-        const ads = await AdsSchema.find({game}, {discord: 0});
+        const ads = await AdsSchema.find({game});
         if(ads.length > 0){
             return res.status(200).json(ads);
         }else{
