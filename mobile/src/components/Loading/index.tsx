@@ -22,9 +22,13 @@ export function Loading() {
         setLoad(false);
     });
   
-    return load && (
-        <View style={styles.container}>
-            <ActivityIndicator animating={true} size={60} color={THEME.COLORS.PRIMARY} />
-        </View>
+    return (
+        <>
+            {load && (
+                <View style={styles.container}>
+                    <ActivityIndicator animating={true} size={60} color={THEME.COLORS.PRIMARY} />
+                </View>
+            )}
+        </>
     )
 }
